@@ -6,8 +6,95 @@
     <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
 </head>
 <body>
-    <h1>Hello, World!</h1>
+    <p id="title">Katya Clicker</p>
+    <p id="counter">0</p>
+    <img src="resize-image-online.com_1746190205_image-pd3slfq1_GuEF0M1p.png" alt="katya" id="Not loaded Katya" onclick="try_game()">
 </body>
 </html>
 
+<script defer>
+    function try_game() {
+        console.log("function called");
+        let cnt = document.getElementById("counter");
+        cnt.textContent = parseInt(cnt.textContent) + 1;
+        cnt.animate([
+            { transform: 'translateY(0)'},
+            { transform: 'translateY(-20px)' },
+            { transform: 'translateY(0)' }
+        ], {
+            duration: 250
+        
+    })
+    }
+</script>
 
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    #title {
+        text-align: center;
+        font-size: 5rem;
+        font-weight: bold;
+        font-family: "Comic Sans MS", cursive;
+        color: #8B4513;
+        text-shadow: 2px 2px 4px #FFD700;
+        position: absolute;
+        top: 20px;
+        width: 100%;
+    }
+    #counter {
+        font-size: 3rem;
+        font-weight: bold;
+        font-family: "Comic Sans MS", cursive;
+        color: #8B4513;
+        text-shadow: 2px 2px 4px #FFD700;
+        animation: bounce 0.5s ease;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+    img {
+        max-width: 90%;
+        height: auto;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        border-radius: 15px;
+        transition: transform 0.2s ease;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        pointer-events: auto; /* Changed from none to auto to allow click events */
+        -webkit-tap-highlight-color: transparent; /* Removes tap highlight on mobile */
+        touch-action: manipulation; /* Optimizes for touch */
+    }
+
+    img:active {
+        transform: scale(0.8);
+    }
+
+    @media screen and (min-width: 768px) {
+        img {
+            
+            max-width: 60%;
+        }
+    }
+</style>
