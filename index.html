@@ -8,7 +8,7 @@
 <body>
     <p id="title">Katya Clicker</p>
     <p id="counter">0</p>
-    <img src="https://raw.githubusercontent.com/Hanan4ik/Hanan4iksmth/refs/heads/main/resize-image-online.com_1746190205_image-pd3slfq1_GuEF0M1p.png" alt="katya" id="Not loaded Katya" onclick="try_game()">
+    <img src="https://raw.githubusercontent.com/Hanan4ik/Hanan4iksmth/refs/heads/main/resize-image-online.com_1746190205_image-pd3slfq1_GuEF0M1p.png" alt="katya" id="katya" onclick="try_game()">
 </body>
 </html>
 
@@ -17,14 +17,21 @@
         console.log("function called");
         let cnt = document.getElementById("counter");
         cnt.textContent = parseInt(cnt.textContent) + 1;
+        let katya = document.getElementById("katya");
         cnt.animate([
             { transform: 'translateY(0)'},
             { transform: 'translateY(-20px)' },
             { transform: 'translateY(0)' }
         ], {
-            duration: 250
+            duration: 150
+        })
+        katya.animate([
+            { transform: 'scale(0.9)' },
+            { transform: 'scale(1)' }
+        ], {
+            duration: 150
+        })
         
-    })
     }
 </script>
 
@@ -41,21 +48,25 @@
 
     #title {
         text-align: center;
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: bold;
         font-family: "Comic Sans MS", cursive;
         color: #8B4513;
         text-shadow: 2px 2px 4px #FFD700;
-        position: absolute;
+        position: fixed;
         top: 20px;
-        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        z-index: 100;
         user-select: none;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
     }
     #counter {
-        font-size: 1rem;
+        position: static;
+        font-size: 2rem;
         font-weight: bold;
         font-family: "Comic Sans MS", cursive;
         color: #8B4513;
@@ -95,9 +106,7 @@
         touch-action: manipulation; /* Optimizes for touch */
     }
 
-    img:active {
-        transform: scale(0.8);
-    }
+    
 
     @media screen and (min-width: 768px) {
         img {
